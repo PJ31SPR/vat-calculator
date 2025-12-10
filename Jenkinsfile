@@ -6,7 +6,7 @@ pipeline {
         registry = "${dockerCreds_USR}/vatcal"
         registryCredentials = "dockerhub_login"
         dockerImage = ""
-        TF_VAR_gcp_project = "<your project ID from qwiklabs>"
+        TF_VAR_gcp_project = "qwiklabs-gcp-00-c0c6d8a3cd5b"
         TF_VAR_docker_registry = "${registry}"
     }
     stages {
