@@ -48,12 +48,12 @@ resource "google_compute_firewall" "default" {
   name    = "server-firewall"
   network = "default"
   direction = "INGRESS"
-  source_ranges = ["0.0.0.0/0"]
-
+  source_ranges = ["35.235.240.0/20"]  # Google Cloud Shell IP range only
+  
   allow {
     protocol = "icmp"
   }
-
+  
   allow {
     ports = ["22", "80"]
     protocol = "tcp"
