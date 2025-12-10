@@ -1,19 +1,18 @@
 pipeline {
-
     agent any
 
     environment {
         dockerCreds = credentials('dockerhub_login')
         registry = "${dockerCreds_USR}/vatcal"
         registryCredentials = "dockerhub_login"
-        dockerImage = "" // empty var, will be written to later
+        dockerImage = ""
     }
 
     stages {
         stage('Run Tests') {
             steps {
-               npm 'install'
-               npm 'test'
+                sh 'npm install'
+                sh 'npm test'
             }
         }
         stage('Build Image') {
@@ -26,7 +25,7 @@ pipeline {
         stage('Push Image') {
             steps {
                 script {
-                    docker.withRegistry("", registryCredentials) {
+                    docker.withRegistry("https://registry.hub.docker.com", registryCredentials) {
                         dockerImage.push("${env.BUILD_NUMBER}")
                         dockerImage.push("latest")
                     }
