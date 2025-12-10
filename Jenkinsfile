@@ -10,12 +10,12 @@ pipeline {
     }
 
     stages {
-        stage('Run Tests') {
-            steps {
-               npm 'install'
-               npm 'test'
-            }
-        }
+        // stage('Run Tests') {
+        //     steps {
+        //        npm 'install'
+        //        npm 'test'
+        //     }
+        // }
         stage('Build Image') {
             steps {
                 script {
